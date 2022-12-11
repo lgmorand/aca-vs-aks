@@ -20,8 +20,7 @@ jobs:
         run: sudo apt install jq
 
       - name: Put markdown files together
-        run: cp 
-        working-directory: ./assets/00-title.md ./src/00-title.md
+        run: cp ./assets/00-title.md ./src/00-title.md
 
       - name: prepare files to include
         run: |
@@ -49,7 +48,7 @@ jobs:
         working-directory: ./
       
       - name: Build PDF version
-        run: pandoc -s result.txt -o 'ACA vs AKS comparison guide.pdf' --from markdown --template eisvogel.latex
+        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.pdf' --from markdown --template eisvogel.latex
         working-directory: ./output
 
       - name: Upload a Build Artifact
@@ -57,4 +56,4 @@ jobs:
         with:
           name: Generated PDF
           path: |
-            ./output/AKS-Checklist.pdf
+            ./output/ACA-vs-AKS-comparison-guide.pdf
