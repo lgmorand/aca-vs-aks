@@ -16,12 +16,11 @@ geometry:
 fontfamily:
 - charter
 header-includes:
-page-background: "background.pdf"
 titlepage: true
-titlepage-text-color: "000"
-titlepage-rule-color: "FFFFFF"
-titlepage-rule-height: 1
+titlepage-text-color: "000000"
+titlepage-rule-color: "000000"
 titlepage-background: "cover.pdf"
 colorlinks: true
+page-background: "background.pdf"
 ---
 
