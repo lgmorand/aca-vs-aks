@@ -18,10 +18,9 @@ fontfamily:
 header-includes:
 page-background: "background.pdf"
 titlepage: true
-titlepage-color: "1b82af"
-titlepage-text-color: "FFFFFF"
+titlepage-text-color: "000"
 titlepage-rule-color: "FFFFFF"
-titlepage-rule-height: 2
+titlepage-rule-height: 1
 titlepage-background: "cover.pdf"
 colorlinks: true
 ---
