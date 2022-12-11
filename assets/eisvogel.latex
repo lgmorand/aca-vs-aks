@@ -918,7 +918,6 @@ $if(titlepage-background)$
   \setstretch{2}
   \vfill
   \vskip -8em
-  \noindent {\huge \textbf{\textsf{$title$}}}
   $if(subtitle)$
   \vskip 1em
   {\Large \textsf{$subtitle$}}
