@@ -1,6 +1,9 @@
+![Comparison guide](media/social-card.png)
+
 # Azure Containers Apps vs Azure Kubernetes Services
 
-Simple comparison between ACA and AKS
+This guide is a tentatively exhaustive comparison guide between ACA and AKS.
+The content (in markdown format) can be found [here](src/comparison.md) and a ready-to-use PDF can be found within [Releases](https://github.com/lgmorand/aca-vs-aks/releases).
 
 ## Contributors
 

@@ -1,4 +1,4 @@
-## Comparison between ACA and AKS
+# Comparison between ACA and AKS
 
 ||ACA|AKS|
 |---|:---:|:---:|

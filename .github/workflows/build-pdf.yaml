@@ -50,6 +50,10 @@ jobs:
       - name: Build PDF version
         run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.pdf' --from markdown --template eisvogel.latex
         working-directory: ./output
+      
+      - name: Build Word version
+        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.docx'
+        working-directory: ./output
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
@@ -57,3 +61,4 @@ jobs:
           name: Generated PDF
           path: |
             ./output/ACA-vs-AKS-comparison-guide.pdf
+            ./output/ACA-vs-AKS-comparison-guide.docx

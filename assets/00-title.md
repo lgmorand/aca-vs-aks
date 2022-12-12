@@ -1,6 +1,8 @@
 ---
 title:
-- ACA vs AKS Comparison guide
+- 'ACA vs AKS Comparison guide'
+subject:
+- 'ACA vs AKS Comparison guide'
 author:
 - https://github.com/lgmorand/aca-vs-aks
 author-meta:
