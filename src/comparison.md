@@ -20,7 +20,7 @@
 ||||
 | **Security** |
 | **Monitoring** |
-|Opérations|Opérations|Opérations|
+| Azure monitor integration | Yes, built-in | Yes, built-in|
 | **Cost** |
 | Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time |
 | Reserved Instances | Yes, possible| Not supported|

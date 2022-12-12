@@ -3,8 +3,14 @@ title:
 - ACA vs AKS Comparison guide
 author:
 - https://github.com/lgmorand/aca-vs-aks
+author-meta:
+- 'Louis-Guillaume MORAND'
 date:
 - \today
+date-meta:
+- \today
+keywords:
+- 'ACA;AKS;Azure;Comparison;Benckmark'
 papersize:
 - a4
 fontsize:
