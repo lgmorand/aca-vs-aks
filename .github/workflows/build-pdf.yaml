@@ -58,7 +58,8 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: Generated PDF
+          name: Generated documents
+          retention-days: 60
           path: |
             ./output/ACA-vs-AKS-comparison-guide.pdf
             ./output/ACA-vs-AKS-comparison-guide.docx
