@@ -1,13 +1,14 @@
 ![Comparison guide](media/social-card.png)
+[![Generate offline version](https://github.com/lgmorand/aca-vs-aks/actions/workflows/build-pdf.yaml/badge.svg?branch=main)](https://github.com/lgmorand/aca-vs-aks/actions/workflows/build-pdf.yaml)
 
 # Azure Containers Apps vs Azure Kubernetes Services
 
 This guide is a tentatively exhaustive comparison guide between ACA and AKS.
-The content (in markdown format) can be found [here](src/comparison.md) and a ready-to-use PDF can be found within [Releases](https://github.com/lgmorand/aca-vs-aks/releases).
+The content (in markdown format) can be found [here](src/comparison.md) and a ready-to-use Docx+PDF can be found within [Releases](https://github.com/lgmorand/aca-vs-aks/releases).
 
 > Azure Container Apps is a recent platform on Azure and it evolves quite rapidly. This comparison may not be up to date with the very last features.
 
-[![Generate offline version](https://github.com/lgmorand/aca-vs-aks/actions/workflows/build-pdf.yaml/badge.svg?branch=main)](https://github.com/lgmorand/aca-vs-aks/actions/workflows/build-pdf.yaml)
+Don't hesitate to contribute! :)
 
 ## Contributors
 

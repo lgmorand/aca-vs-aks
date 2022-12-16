@@ -37,8 +37,6 @@
 | **Development** |
 |Service discovery|Yes, when installing tooling such as Dapr|Yes, built-in with Dapr|
 | Type of workload| Almost anything| Microservices, Event-driven applications, Jobs, small web applications|
-||||
-||||
 |Deployment| Kubernetes manifests, kustomization, Helm | Azure CLI|
 | **Monitoring** |
 | Azure monitor integration | Yes, built-in | Yes, built-in |
