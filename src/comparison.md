@@ -1,6 +1,6 @@
 # Comparison between ACA and AKS
 
-||ACA|AKS|
+||AKS|ACA|
 |---|:---:|:---:|
 | Complexity | High | Low |
 | Portability | High | Low, containers are the same but manifests are not portable |
@@ -26,6 +26,7 @@
 | Internal | Native usage of network policies | No network segmentation within the same environment |
 | VNet integration | Yes, built-in | Yes, built-in |
 | HTTP Ingress | Yes, built-in (Envoy)| Yes(may need additional infrastructure)|
+| TCP ingress |  Yes | Yes, [in preview with limitation](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
 | Traffic management | Yes, but nothing OOB | Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking) |
 | **Security** |
 | Managed identity | Supported with [workload identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity)| OOB [supported](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity)|
@@ -37,8 +38,6 @@
 | **Development** |
 |Service discovery|Yes, when installing tooling such as Dapr|Yes, built-in with Dapr|
 | Type of workload| Almost anything| Microservices, Event-driven applications, Jobs, small web applications|
-||||
-||||
 |Deployment| Kubernetes manifests, kustomization, Helm | Azure CLI|
 | **Monitoring** |
 | Azure monitor integration | Yes, built-in | Yes, built-in |
