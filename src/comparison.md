@@ -1,6 +1,6 @@
 # Comparison between ACA and AKS
 
-||ACA|AKS|
+||AKS|ACA|
 |---|:---:|:---:|
 | Complexity | High | Low |
 | Portability | High | Low, containers are the same but manifests are not portable |
