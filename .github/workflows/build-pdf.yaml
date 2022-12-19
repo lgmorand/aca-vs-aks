@@ -2,6 +2,8 @@ name: Generate offline version
 
 on:
   push:
+    branches:    
+      - main
   workflow_dispatch:
 
 jobs:
