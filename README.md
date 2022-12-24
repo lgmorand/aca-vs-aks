@@ -13,6 +13,7 @@ Don't hesitate to contribute! :)
 ## Contributors
 
 **[Louis-Guillaume MORAND](https://github.com/lgmorand)**
+
 **[Brice DEKANY](https://github.com/bdekany)**
 
 ## License
