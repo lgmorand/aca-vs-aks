@@ -17,4 +17,4 @@ Don't hesitate to contribute! :)
 
 ## License
 
-[![License: Apache 2.0](https://camo.githubusercontent.com/55056d83628fa4aae93c5790e8641e6d6998b138dae009c0854f4efaae440520/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f436f766572616765)](https://opensource.org/licenses/Apache-2.0)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
