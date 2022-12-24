@@ -41,7 +41,7 @@
 |Deployment| Kubernetes manifests, kustomization, Helm | Azure CLI|
 | **Monitoring** |
 | Azure monitor integration | Yes, built-in | Yes, built-in |
-| 3rd party integration | Logs/Metrics can be shipped to third party tools | No |
+| 3rd party integration | Logs/Metrics can be shipped to third party tools | No direct integration, Metrics can be pulled from [Azure Monitor API](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported#microsoftappcontainerapps)  |
 | **Cost** |
 | Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time |
 | Reserved Instances | Yes, possible| Not supported|
