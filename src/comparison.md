@@ -14,7 +14,7 @@
 | **Autoscaling** |
 | Cluster Autoscaling |Yes, with [cluster autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler) | Yes, automatic|
 | Basic workload autoscaling | Yes, out-of-the-box with metric server in combination with [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | Yes, with [scaling rules](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
-| Advanced workload autoscaling |Can be done by deploying [KEDA](https://keda.hs)| Yes, out-of-the-box with [built-in KEDA](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
+| Advanced workload autoscaling |Can be done by deploying [KEDA](https://keda.sh)| Yes, out-of-the-box with [built-in KEDA](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
 | Limits | Almost no limit in terms of number of pods| App scaling is limited to [30 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
 | **Workloads** |
 | Operating systems | Support Linux/Windows based container | Supports only Linux based container images|
