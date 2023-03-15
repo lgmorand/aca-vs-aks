@@ -25,6 +25,7 @@
 | mTLS communication | No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh| OOB support for mTLS with dapr integration (need configuration) |
 | Internal | Native usage of network policies | No network segmentation within the same environment |
 | VNet integration | Yes, built-in | Yes, built-in |
+| UDR support | Yes (with Azure CNI) | No (in [roadmap](https://github.com/microsoft/azure-container-apps/issues/5760)0)|
 | HTTP Ingress | Yes, built-in (Envoy)| Yes(may need additional infrastructure)|
 | TCP ingress |  Yes | Yes, [in preview with limitation](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
 | Traffic management | Yes, but nothing OOB | Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking) |
