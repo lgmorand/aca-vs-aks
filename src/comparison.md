@@ -27,6 +27,7 @@
 | VNet integration | Yes, built-in | Yes, built-in |
 | HTTP Ingress | Yes, built-in (Envoy)| Yes(may need additional infrastructure)|
 | TCP ingress |  Yes | Yes, [in preview with limitation](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
+| Controlling egress traffic | Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic) | Yes  [limit egress traffic](https://learn.microsoft.com/en-us/azure/container-apps/networking#user-defined-routes-udr---preview) |
 | Traffic management | Yes, but nothing OOB | Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking) |
 | **Security** |
 | Managed identity | Supported with [workload identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity)| OOB [supported](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity)|
