@@ -15,18 +15,19 @@
 | Cluster Autoscaling |Yes, with [cluster autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler) | Yes, automatic|
 | Basic workload autoscaling | Yes, out-of-the-box with metric server in combination with [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | Yes, with [scaling rules](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
 | Advanced workload autoscaling |Can be done by deploying [KEDA](https://keda.sh)| Yes, out-of-the-box with [built-in KEDA](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
-| Limits | Almost no limit in terms of number of pods| App scaling is limited to [30 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
+| Limits | Almost no limit in terms of number of pods| App scaling is limited to [300 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
 | **Workloads** |
 | Operating systems | Support Linux/Windows based container | Supports only Linux based container images|
-| Compute configuration| Virtually unlimited to any configuration | Very limited, [from 0.25vPCU/0.5Gio memory to 2vCPU/4Gio memory](https://learn.microsoft.com/en-us/azure/container-apps/containers#configuration) |
+| Compute configuration| Virtually unlimited to any configuration | Very limited, [from 0.25vPCU/0.5Gio memory to 4vCPU/8Gio memory](https://learn.microsoft.com/en-us/azure/container-apps/containers#configuration) |
+| memory-optimized Compute | Yes, using [Memory dedicated nodes](https://learn.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series-memory) | yes using [dedicated workflow profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types) |
 | GPU Compute | Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster) | No GPU support|
 | Confidential Compute | Yes, using [SGX dedicated nodes](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview) | No confidential compute support|
 | **Network** |
 | mTLS communication | No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh| OOB support for mTLS with dapr integration (need configuration) |
 | Internal | Native usage of network policies | No network segmentation within the same environment |
 | VNet integration | Yes, built-in | Yes, built-in |
-| HTTP Ingress | Yes, built-in (Envoy)| Yes(may need additional infrastructure)|
-| TCP ingress |  Yes | Yes, [in preview with limitation](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
+| HTTP Ingress | Yes, built-in (Envoy)| Yes |
+| TCP ingress |  Yes | [Yes](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
 | Controlling egress traffic with Firewall | Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic) | Yes  [limit egress traffic](https://learn.microsoft.com/en-us/azure/container-apps/networking#user-defined-routes-udr---preview) |
 | Traffic management | Yes, but nothing OOB | Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking) |
 | **Security** |
