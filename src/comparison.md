@@ -30,9 +30,9 @@
 | TCP ingress |  Yes | [Yes](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
 | Controlling egress traffic with Firewall | Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic) | Yes  [limit egress traffic](https://learn.microsoft.com/en-us/azure/container-apps/networking#user-defined-routes-udr---preview) |
 | Traffic management | Yes, but nothing OOB | Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking) |
+| Session affinity | Yes, [built-in](https://learn.microsoft.com/en-us/azure/container-apps/sticky-sessions?pivots=azure-portal) | Yes, [built-in in kubernete](https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity)|
 | **Security** |
-| Managed identity | Supported with [workload identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity)| OOB [supported](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity)|
-| Injecting identities into workloads | Yes, with [workloads identities](https://azure.github.io/azure-workload-identity) | No |
+| Injecting identities into workloads | Yes, with [workloads identities](https://azure.github.io/azure-workload-identity) | OOB [supported](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity) |
 | Authentication and authorization | Yes but manually with services meshes or [components](https://github.com/Azure/EasyAuthForK8s) | Yes, [native](https://learn.microsoft.com/en-us/azure/container-apps/authentication). Integration with AAD, Facebook, Twitter & Google|
 |Secret management | Secret management via CSI driver (i.e. Azure KeyVault or HashiCorp Vault) | [Key-value management](https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets), no integration with KeyVault|
 | Security Policy| Rich, with Gatekeeper and Azure Policies| Limited to some [configuration policies](https://learn.microsoft.com/en-us/azure/container-apps/policy-reference) |
@@ -45,6 +45,6 @@
 | Azure monitor integration | Yes, built-in | Yes, built-in |
 | 3rd party integration | Logs/Metrics can be shipped to third party tools | No direct integration, Metrics can be pulled from [Azure Monitor API](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported#microsoftappcontainerapps)  |
 | **Cost** |
-| Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time |
+| Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time. Alternative is to use [dedicated profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
 | Reserved Instances | Yes, possible| Not supported|
 | Azure saving plan for compute| Yes, possible| Not supported|
