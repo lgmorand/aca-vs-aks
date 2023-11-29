@@ -47,4 +47,4 @@
 | **Cost** |
 | Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time. Alternative is to use [dedicated profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
 | Reserved Instances | Yes, possible| Not supported|
-| Azure saving plan for compute| Yes, possible| Not supported|
+| Azure saving plan for compute| Yes, possible| Yes, [possible](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/azure-container-apps-eligible-for-azure-savings-plan-for-compute/ba-p/3941243)|
