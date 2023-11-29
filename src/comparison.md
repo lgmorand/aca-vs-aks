@@ -18,9 +18,9 @@
 | Limits | Almost no limit in terms of number of pods| App scaling is limited to [300 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
 | **Workloads** |
 | Operating systems | Support Linux/Windows based container | Supports only Linux based container images|
-| Compute configuration| Virtually unlimited to any configuration | Very limited, [from 0.25vPCU/0.5Gio memory to 4vCPU/8Gio memory](https://learn.microsoft.com/en-us/azure/container-apps/containers#configuration) |
+| Compute configuration| Virtually unlimited to any configuration | [Support a predefined list of VM SKU with Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
 | memory-optimized Compute | Yes, using [Memory dedicated nodes](https://learn.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series-memory) | yes using [dedicated workflow profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types) |
-| GPU Compute | Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster) | No GPU support|
+| GPU Compute | Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster) | [GPU supported via Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types)|
 | Confidential Compute | Yes, using [SGX dedicated nodes](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview) | No confidential compute support|
 | **Network** |
 | mTLS communication | No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh| OOB support for mTLS with dapr integration (need configuration) |
