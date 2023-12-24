@@ -44,7 +44,9 @@ jobs:
           sudo apt-get install texlive-xetex
           
       - name: Build TXT result
-        run: pandoc -V documentclass=memoir -s $(cat _includes.txt) -o ../output/result.txt
+        run: |
+          pandoc -V documentclass=memoir -s $(cat _includes.txt) -o ../output/result.txt
+          cat ../output/result.txt
         working-directory: ./src
 
       - name: Copy assets
