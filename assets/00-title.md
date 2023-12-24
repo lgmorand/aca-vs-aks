@@ -30,5 +30,8 @@ titlepage-rule-color: "000000"
 titlepage-background: "cover.pdf"
 colorlinks: true
 page-background: "background.pdf"
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
 ---
 
