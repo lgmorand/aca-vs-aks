@@ -3,6 +3,7 @@
 
 ||AKS|ACA|
 |---|---|---|
+|<img width=250/>|||
 | Complexity | High | Low |
 | Portability | High | Low, containers are the same but manifests are not portable |
 | **Resiliency** |
