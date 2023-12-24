@@ -29,7 +29,12 @@ jobs:
         working-directory: ./src
       
       - name: install pandoc
-        run: sudo apt-get install --assume-yes pandoc 
+        run: |
+            wget https://github.com/jgm/pandoc/releases/download/3.1.11/pandoc-3.1.11-1-amd64.deb
+            sudo dpkg -i pandoc-3.1.11-1-amd64.deb
+
+      - name: get pandoc version
+        run: pandoc --version
         
       - name: install pdflatex
         run: |
@@ -48,7 +53,7 @@ jobs:
         working-directory: ./
       
       - name: Build PDF version
-        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.pdf' --from markdown --template eisvogel.latex
+        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.pdf' --from markdown #--template eisvogel.latex
         working-directory: ./output
       
       - name: Build Word version
