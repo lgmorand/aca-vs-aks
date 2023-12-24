@@ -20,13 +20,13 @@ fontsize:
 footer-content:
 - https://github.com/lgmorand/aca-vs-aks
 geometry:
-- margin=1in
+- paperwidth=22in, paperheight=210mm, margin=2cm
 fontfamily:
 - charter
 header-includes:
-- \usepackage{pdflscape}
-- \newcommand{\blandscape}{\begin{landscape}}
-- \newcommand{\elandscape}{\end{landscape}}
+# - \usepackage{pdflscape}
+# - \newcommand{\blandscape}{\begin{landscape}}
+# - \newcommand{\elandscape}{\end{landscape}}
 titlepage: true
 titlepage-text-color: "000000"
 titlepage-rule-color: "000000"
