@@ -24,14 +24,15 @@ geometry:
 fontfamily:
 - charter
 header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
 titlepage: true
 titlepage-text-color: "000000"
 titlepage-rule-color: "000000"
 titlepage-background: "cover.pdf"
 colorlinks: true
 page-background: "background.pdf"
-- \usepackage{pdflscape}
-- \newcommand{\blandscape}{\begin{landscape}}
-- \newcommand{\elandscape}{\end{landscape}}
+
 ---
 
