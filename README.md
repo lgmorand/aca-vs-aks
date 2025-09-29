@@ -16,6 +16,11 @@ Don't hesitate to contribute! :)
 
 **[Brice DEKANY](https://github.com/bdekany)**
 
+**[Yassine El Ghali](https://github.com/yelghali)**
+
+**[Damien Aicheh](https://github.com/damienaicheh)**
+
+
 ## License
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
