@@ -31,7 +31,9 @@ jobs:
         working-directory: ./src
       
       - name: install pandoc
-        run: sudo apt-get install --assume-yes pandoc 
+        run: |
+         wget https://github.com/jgm/pandoc/releases/download/3.8/pandoc-3.8-1-amd64.deb
+          sudo dpkg -i pandoc-3.8-1-amd64.deb 
         
       - name: install pdflatex
         run: |
