@@ -39,7 +39,7 @@
 |Secret management | Secret management via CSI driver (i.e. Azure KeyVault or HashiCorp Vault) | [Key-value management](https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets), no integration with KeyVault|
 | Security Policy| Rich, with Gatekeeper and Azure Policies| Limited to some [configuration policies](https://learn.microsoft.com/en-us/azure/container-apps/policy-reference) |
 | Runtine scanning | Yes, natively with Defender for Containers or any 3rd party runtime | No, maybe later|
-| Container Sandbox environment | No | Yes [Dynamic sessions] use full for AI workload for instance (https://learn.microsoft.com/en-us/azure/container-apps/sessions) |
+| Container Sandbox environment | No | Yes [Dynamic sessions](https://learn.microsoft.com/en-us/azure/container-apps/sessions) use full for AI workload for instance  |
 | Managed certificates | Can be done based on [AppConfig for instance](https://learn.microsoft.com/en-us/azure/aks/app-routing-dns-ssl) | Yes [Free managed certificates](https://learn.microsoft.com/en-gb/azure/container-apps/custom-domains-managed-certificates?pivots=azure-portal) |
 | Support Azure Key Vault Certificates | [Yes](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver) | [Yes at the environment level](https://learn.microsoft.com/en-us/azure/container-apps/key-vault-certificates-manage) 
 | **Development** |
