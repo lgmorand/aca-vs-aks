@@ -18,14 +18,16 @@
 | Limits | Almost no limit in terms of number of pods| App scaling is limited to [300 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
 | **Workloads** |
 | Operating systems | Support Linux/Windows based container | Supports only Linux based container images|
-| Compute configuration| Virtually unlimited to any configuration | [Support a predefined list of VM SKU with Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
+| Compute configuration| Virtually unlimited to any configuration (also support dynamic sizing)[https://learn.microsoft.com/en-us/azure/aks/node-autoprovision?tabs=azure-cli] | [Support a predefined list of VM SKU with Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
 | memory-optimized Compute | Yes, using [Memory dedicated nodes](https://learn.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series-memory) | yes using [dedicated workflow profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types) |
 | GPU Compute | Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster) | [GPU supported via Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types)|
 | Confidential Compute | Yes, using [SGX dedicated nodes](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview) | No confidential compute support|
+| Azure Arc Compatible | [Yes](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-overview)  | [Yes](https://learn.microsoft.com/en-gb/azure/container-apps/azure-arc-overview) |
 | **Network** |
 | mTLS communication | No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh| OOB support for mTLS with dapr integration (need configuration) |
 | Internal | Native usage of network policies | No network segmentation within the same environment |
 | VNet integration | Yes, built-in | Yes, built-in |
+| Private Endpoint | Private mode at the control plan level (AKS Admin) and for the data plane you can use a private load balancer | Yes on the [Container App Environment](https://learn.microsoft.com/en-gb/azure/container-apps/networking#private-endpoint) at the data plane level|
 | HTTP Ingress | Yes, built-in (Envoy)| Yes |
 | TCP ingress |  Yes | [Yes](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp) |
 | Controlling egress traffic with Firewall | Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic) | Yes  [limit egress traffic](https://learn.microsoft.com/en-us/azure/container-apps/networking#user-defined-routes-udr---preview) |
@@ -37,12 +39,17 @@
 |Secret management | Secret management via CSI driver (i.e. Azure KeyVault or HashiCorp Vault) | [Key-value management](https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets), no integration with KeyVault|
 | Security Policy| Rich, with Gatekeeper and Azure Policies| Limited to some [configuration policies](https://learn.microsoft.com/en-us/azure/container-apps/policy-reference) |
 | Runtine scanning | Yes, natively with Defender for Containers or any 3rd party runtime | No, maybe later|
+| Container Sandbox environment | No | Yes [Dynamic sessions] use full for AI workload for instance (https://learn.microsoft.com/en-us/azure/container-apps/sessions) |
+| Managed certificates | Can be done based on [AppConfig for instance](https://learn.microsoft.com/en-us/azure/aks/app-routing-dns-ssl) | Yes [Free managed certificates](https://learn.microsoft.com/en-gb/azure/container-apps/custom-domains-managed-certificates?pivots=azure-portal) |
+| Support Azure Key Vault Certificates | [Yes](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver) | [Yes at the environment level](https://learn.microsoft.com/en-us/azure/container-apps/key-vault-certificates-manage) 
 | **Development** |
 |Service discovery|Yes, when installing tooling such as Dapr|Yes, built-in with Dapr|
 | Type of workload| Almost anything| Microservices, Event-driven applications, Jobs, small web applications|
 |Deployment| Kubernetes manifests, kustomization, Helm | Azure CLI|
+| Infra As Code (ARM, Bicep, Terraform) | Yes | Yes |
 | **Monitoring** |
 | Azure monitor integration | Yes, built-in | Yes, built-in |
+| Open Telemetry support | Yes, with custom code | [Yes, natively with OpenTelemetry Agent](https://learn.microsoft.com/en-gb/azure/container-apps/opentelemetry-agents?tabs=arm%2Carm-example) |
 | 3rd party integration | Logs/Metrics can be shipped to third party tools | No direct integration, Metrics can be pulled from [Azure Monitor API](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported#microsoftappcontainerapps)  |
 | **Cost** |
 | Compute Cost| Standard [node-based billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing) | Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time. Alternative is to use [dedicated profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
