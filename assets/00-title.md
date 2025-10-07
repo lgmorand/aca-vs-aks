@@ -23,7 +23,6 @@ geometry:
 - margin=1in
 fontfamily:
 - charter
-header-includes:
 tables: true
 table-use-row-colors: true
 titlepage: true
@@ -32,5 +31,6 @@ titlepage-rule-color: "101010"
 titlepage-background: "cover.pdf"
 colorlinks: true
 page-background: "background.pdf"
+header-includes:
 ---
 
