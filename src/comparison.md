@@ -11,12 +11,16 @@
 | Control plane| Control plane managed by Azure | Control/Data plane abstracted from Azure. wrapper around API server (no access to kubectl command) |
 | Data plane | managed by user by creating nodepools| Serverless and fully managed|
 | Upgrade management | Manual or [automated](https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster) | Fully managed|
+| Kubernetes Version Control | Yes, supports [multiple versions](https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions) with control over upgrades | Not applicable, abstracted by platform |
+| Resource Limits (CPU/Memory) | Yes, configurable per pod/container | Yes, [configurable per container](https://learn.microsoft.com/en-us/azure/container-apps/containers#configuration) |
+| Environment Variables & Configuration | Yes, via ConfigMaps, Secrets, and environment variables | Yes, via [environment variables and secrets](https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets) |
 | **Autoscaling** |||
 | Cluster Autoscaling |Yes, with [cluster autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler) | Yes, automatic|
 | Basic workload autoscaling | Yes, out-of-the-box with metric server in combination with [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | Yes, with [scaling rules](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
 | Advanced workload autoscaling |Can be done by deploying [KEDA](https://keda.sh)| Yes, out-of-the-box with [built-in KEDA](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)|
 | Limits | Almost no limit in terms of number of pods| App scaling is limited to [300 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas) |
 | Scale to Zero | Possible but requires custom configuration | Yes, [native support](https://learn.microsoft.com/en-us/azure/container-apps/scale-app) with configurable scale-to-zero behavior |
+| Pod Disruption Budget | Yes, native [PDB support](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) | Not applicable, platform manages availability |
 | **Workloads** |||
 | Operating systems | Support Linux/Windows based container | Supports only Linux based container images|
 | Compute configuration| Virtually unlimited to any configuration (also support [dynamic sizing](https://learn.microsoft.com/en-us/azure/aks/node-autoprovision?tabs=azure-cli) | [Support a predefined list of VM SKU with Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview) |
@@ -24,6 +28,9 @@
 | GPU Compute | Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster) | [GPU supported via Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types)|
 | Confidential Compute | Yes, using [SGX dedicated nodes](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview) | No confidential compute support|
 | Azure Arc Compatible | [Yes](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-overview)  | [Yes](https://learn.microsoft.com/en-gb/azure/container-apps/azure-arc-overview) |
+| Sidecar Containers | Yes, native Kubernetes support | Limited, [sidecar support](https://learn.microsoft.com/en-us/azure/container-apps/containers#multiple-containers) in preview |
+| Init Containers | Yes, native Kubernetes support | Yes, [init containers support](https://learn.microsoft.com/en-us/azure/container-apps/containers#init-containers) |
+| Health Probes | Yes, liveness, readiness, and startup probes | Yes, [liveness, readiness, and startup probes](https://learn.microsoft.com/en-us/azure/container-apps/health-probes) |
 | **Network** |||
 | Service Mesh | Yes, supports [Istio](https://learn.microsoft.com/en-us/azure/aks/istio-about), Linkerd, and other CNCF service meshes | No standalone service mesh, built-in Envoy proxy for ingress |
 | mTLS communication | No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh| OOB support for mTLS with dapr integration (need configuration) |
