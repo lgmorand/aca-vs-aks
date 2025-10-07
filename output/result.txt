@@ -1,0 +1,171 @@
+---
+author:
+- "https://github.com/lgmorand/aca-vs-aks"
+author-meta:
+- Louis-Guillaume MORAND
+colorlinks: true
+date:
+- "`\\today`{=tex}"
+date-meta:
+- "`\\today`{=tex}"
+fontfamily:
+- charter
+fontsize:
+- 12pt
+footer-content:
+- "https://github.com/lgmorand/aca-vs-aks"
+geometry:
+- margin=1in
+keywords:
+- ACA;AKS;Azure;Comparison;Benckmark
+page-background: background.pdf
+papersize:
+- a4
+subject:
+- ACA vs AKS Comparison guide
+title:
+- ACA vs AKS Comparison guide
+titlepage: true
+titlepage-background: cover.pdf
+titlepage-rule-color: 101010
+titlepage-text-color: 101010
+---
+
+
+
+# Comparison between ACA and AKS
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                       AKS                                                                                                                             ACA
+  ------------------ -------------------------------------------------------------------------------------------------------- -----------------------------------------------------------------------------------------------------------------------------------------------------
+  Complexity                                                           High                                                                                                                            Low
+
+  Portability                                                          High                                                                                                Low, containers are the same but manifests are not portable
+
+  **Resiliency**                                                                                                              
+
+  SLA                                           free SLO of 99,5% and SLA of 99.95% with [Premium                                                           SLA of [99.95%](https://azure.microsoft.com/fr-fr/support/legal/sla/container-apps/v1_0/)
+                                           SKU](https://learn.microsoft.com/en-us/azure/aks/uptime-sla)                       
+
+  Multi-AZ support   Yes, manually during [cluster creation](https://learn.microsoft.com/en-us/azure/aks/availability-zones)                                                                      Yes, built-in
+
+  **Operations**                                                                                                              
+
+  Control plane                                           Control plane managed by Azure                                                               Control/Data plane abstracted from Azure. wrapper around API server (no access to kubectl command)
+
+  Data plane                                          managed by user by creating nodepools                                                                                               Serverless and fully managed
+
+  Upgrade management         Manual or [automated](https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster)                                                                              Fully managed
+
+  **Autoscaling**                                                                                                             
+
+  Cluster                 Yes, with [cluster autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler)                                                                         Yes, automatic
+  Autoscaling                                                                                                                 
+
+  Basic workload                            Yes, out-of-the-box with metric server in combination with                                                     Yes, with [scaling rules](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)
+  autoscaling                   [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)             
+
+  Advanced workload                              Can be done by deploying [KEDA](https://keda.sh)                                                  Yes, out-of-the-box with [built-in KEDA](https://learn.microsoft.com/en-us/azure/container-apps/scale-app)
+  autoscaling                                                                                                                 
+
+  Limits                                            Almost no limit in terms of number of pods                                                       App scaling is limited to [300 replicas](https://learn.microsoft.com/en-us/azure/container-apps/quotas)
+
+  **Workloads**                                                                                                               
+
+  Operating systems                                   Support Linux/Windows based container                                                                                        Supports only Linux based container images
+
+  Compute                                Virtually unlimited to any configuration (also support [dynamic                         [Support a predefined list of VM SKU with Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview)
+  configuration               sizing](https://learn.microsoft.com/en-us/azure/aks/node-autoprovision?tabs=azure-cli)          
+
+  memory-optimized                                         Yes, using [Memory dedicated                                             yes using [dedicated workflow profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types)
+  Compute                    nodes](https://learn.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series-memory)          
+
+  GPU Compute               Yes, using [GPU dedicated nodes](https://learn.microsoft.com/en-us/azure/aks/gpu-cluster)                 [GPU supported via Workload Profile](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview#profile-types)
+
+  Confidential                                              Yes, using [SGX dedicated                                                                                                    No confidential compute support
+  Compute             nodes](https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview)  
+
+  Azure Arc                           [Yes](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-overview)                                                    [Yes](https://learn.microsoft.com/en-gb/azure/container-apps/azure-arc-overview)
+  Compatible                                                                                                                  
+
+  **Network**                                                                                                                 
+
+  mTLS communication              No OOB mTLS support in pods. Can be done by installing Dapr or a service mesh                                                          OOB support for mTLS with dapr integration (need configuration)
+
+  Internal                                               Native usage of network policies                                                                                      No network segmentation within the same environment
+
+  VNet integration                                                Yes, built-in                                                                                                                   Yes, built-in
+
+  Private Endpoint     Private mode at the control plan level (AKS Admin) and for the data plane you can use a private load    Yes on the [Container App Environment](https://learn.microsoft.com/en-gb/azure/container-apps/networking#private-endpoint) at the data plane level
+                                                                     balancer                                                 
+
+  HTTP Ingress                                                Yes, built-in (Envoy)                                                                                                                    Yes
+
+  TCP ingress                                                          Yes                                                                                     [Yes](https://learn.microsoft.com/en-us/azure/container-apps/ingress?tabs=bash#tcp)
+
+  Controlling egress       Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic)                  Yes [limit egress traffic](https://learn.microsoft.com/en-us/azure/container-apps/networking#user-defined-routes-udr---preview)
+  traffic with                                                                                                                
+  Firewall                                                                                                                    
+
+  Traffic management                                           Yes, but nothing OOB                                                                      Native [traffic management](https://learn.microsoft.com/en-us/azure/container-apps/networking)
+
+  Session affinity                                                     Yes,                                                                        Yes, [built-in in kubernete](https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity)
+                      [built-in](https://learn.microsoft.com/en-us/azure/container-apps/sticky-sessions?pivots=azure-portal)  
+
+  **Security**                                                                                                                
+
+  Injecting                     Yes, with [workloads identities](https://azure.github.io/azure-workload-identity)                                           OOB [supported](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity)
+  identities into                                                                                                             
+  workloads                                                                                                                   
+
+  Authentication and      Yes but manually with services meshes or [components](https://github.com/Azure/EasyAuthForK8s)             Yes, [native](https://learn.microsoft.com/en-us/azure/container-apps/authentication). Integration with AAD, Facebook, Twitter & Google
+  authorization                                                                                                               
+
+  Secret management                 Secret management via CSI driver (i.e. Azure KeyVault or HashiCorp Vault)                              [Key-value management](https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets), no integration with KeyVault
+
+  Security Policy                                    Rich, with Gatekeeper and Azure Policies                                                   Limited to some [configuration policies](https://learn.microsoft.com/en-us/azure/container-apps/policy-reference)
+
+  Runtine scanning                     Yes, natively with Defender for Containers or any 3rd party runtime                                                                                       No, maybe later
+
+  Container Sandbox                                                     No                                                                Yes [Dynamic sessions](https://learn.microsoft.com/en-us/azure/container-apps/sessions) use full for AI workload for instance
+  environment                                                                                                                 
+
+  Managed                                              Can be done based on [AppConfig for                                       Yes [Free managed certificates](https://learn.microsoft.com/en-gb/azure/container-apps/custom-domains-managed-certificates?pivots=azure-portal)
+  certificates                      instance](https://learn.microsoft.com/en-us/azure/aks/app-routing-dns-ssl)                
+
+  Support Azure Key                [Yes](https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver)                                [Yes at the environment level](https://learn.microsoft.com/en-us/azure/container-apps/key-vault-certificates-manage)
+  Vault Certificates                                                                                                          
+
+  **Development**                                                                                                             
+
+  Service discovery                                 Yes, when installing tooling such as Dapr                                                                                                Yes, built-in with Dapr
+
+  Type of workload                                               Almost anything                                                                                     Microservices, Event-driven applications, Jobs, small web applications
+
+  Deployment                                        Kubernetes manifests, kustomization, Helm                                                                                                       Azure CLI
+
+  Infra As Code                                                        Yes                                                                                                                             Yes
+  (ARM, Bicep,                                                                                                                
+  Terraform)                                                                                                                  
+
+  **Monitoring**                                                                                                              
+
+  Azure monitor                                                   Yes, built-in                                                                                                                   Yes, built-in
+  integration                                                                                                                 
+
+  Open Telemetry                                              Yes, with custom code                                               [Yes, natively with OpenTelemetry Agent](https://learn.microsoft.com/en-gb/azure/container-apps/opentelemetry-agents?tabs=arm%2Carm-example)
+  support                                                                                                                     
+
+  3rd party                                      Logs/Metrics can be shipped to third party tools                                                                       No direct integration, Metrics can be pulled from [Azure Monitor
+  integration                                                                                                                                  API](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported#microsoftappcontainerapps)
+
+  **Cost**                                                                                                                    
+
+  Compute Cost                                                 Standard [node-based                                            Based on [resources consumption](https://learn.microsoft.com/en-us/azure/container-apps/billing). Allow idle time. Alternative is to use [dedicated
+                             billing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/#pricing)                                      profiles](https://learn.microsoft.com/en-us/azure/container-apps/workload-profiles-overview)
+
+  Reserved Instances                                              Yes, possible                                                                                                                   Not supported
+
+  Azure saving plan                                               Yes, possible                                                                                                                       Yes,
+  for compute                                                                                                                  [possible](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/azure-container-apps-eligible-for-azure-savings-plan-for-compute/ba-p/3941243)
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
