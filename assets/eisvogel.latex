@@ -572,6 +572,7 @@ $endif$
 $if(titlepage)$
 \usepackage{pagecolor}
 \usepackage{afterpage}
+\usepackage{pdflscape}
 $if(titlepage-background)$
 \usepackage{tikz}
 $endif$
@@ -954,6 +955,7 @@ $endif$
 \end{titlepage}
 \restoregeometry
 $endif$
+\begin{landscape}
 $endif$
 
 %%
@@ -1062,4 +1064,7 @@ $for(include-after)$
 $include-after$
 
 $endfor$
+$if(titlepage)$
+\end{landscape}
+$endif$
 \end{document}

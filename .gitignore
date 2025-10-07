@@ -1,0 +1,8 @@
+# Build output
+output/
+
+# Temporary build files
+*.deb
+src/00-title.md
+src/_includes.txt
+*.log
