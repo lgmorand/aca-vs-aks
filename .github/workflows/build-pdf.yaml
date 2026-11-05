@@ -2,68 +2,60 @@ name: Generate offline version
 
 on:
   push:
-    branches:    
-      - main
+    branches: [main]
+  pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '0 7 1 * *'
+
+permissions:
+  contents: read
 
 jobs:
-  generateFile:
+  documents:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
-      
-      - name: Create output folder
-        run: mkdir ./output
-      
-      - run: sudo apt-get update
-        name: Apt-get update
+      - uses: actions/checkout@v7
 
-      - name: Install jq
-        run: sudo apt install jq
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
 
-      - name: Put markdown files together
-        run: cp ./assets/00-title.md ./src/00-title.md
+      - name: Install publishing dependencies
+        run: npm ci
 
-      - name: prepare files to include
+      - name: Install Chromium and system dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Pandoc 3.13
         run: |
-          ls *.md >> _includes.txt
-          cat _includes.txt
-        working-directory: ./src
-      
-      - name: install pandoc
-        run: |
-         wget https://github.com/jgm/pandoc/releases/download/3.8/pandoc-3.8-1-amd64.deb
-          sudo dpkg -i pandoc-3.8-1-amd64.deb 
-        
-      - name: install pdflatex
-        run: |
-          sudo apt-get install texlive-latex-base
-          sudo apt-get install texlive-fonts-recommended
-          sudo apt-get install texlive-latex-extra
-          sudo apt-get install texlive-xetex
-          
-      - name: Build TXT result
-        run: pandoc -V documentclass=memoir -s $(cat _includes.txt) -o ../output/result.txt
-        working-directory: ./src
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/pandoc.deb" \
+            https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-1-amd64.deb
+          sudo dpkg -i "$RUNNER_TEMP/pandoc.deb"
 
-      - name: Copy assets
-        run: |
-          cp assets/* ./output
-        working-directory: ./
-      
-      - name: Build PDF version
-        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.pdf' --from markdown --template eisvogel.latex
-        working-directory: ./output
-      
-      - name: Build Word version
-        run: pandoc -s result.txt -o 'ACA-vs-AKS-comparison-guide.docx'
-        working-directory: ./output
+      - name: Validate document structure and publishing helpers
+        run: npm test
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
+      - name: Build and inspect PDF, HTML, DOCX, and screenshots
+        run: npm run build
+
+      - name: Check documentation links and anchors
+        run: npm run check:links
+
+      - name: Upload documents, previews, and validation reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
         with:
           name: Generated documents
           retention-days: 60
+          if-no-files-found: error
           path: |
-            ./output/ACA-vs-AKS-comparison-guide.pdf
-            ./output/ACA-vs-AKS-comparison-guide.docx
+            output/ACA-vs-AKS-comparison-guide.pdf
+            output/ACA-vs-AKS-comparison-guide.docx
+            output/ACA-vs-AKS-comparison-guide.html
+            output/link-report.json
+            output/pdf-report.json
+            media/guide-preview.png
+            media/comparison-preview.png
